@@ -1,0 +1,38 @@
+{
+  "name": "cypress-inter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "start": "tsx ./app/server.ts",
+    "fix": "gts fix",
+    "prepare": "npm.cmd run compile",
+    "pretest": "npm.cmd run compile",
+    "posttest": "npm.cmd run lint"
+  },
+  "author": "Mihhail Matišinets",
+  "license": "MIT",
+  "devDependencies": {
+    "@apollo/server": "^4.9.5",
+    "@apollo/subgraph": "^2.6.2",
+    "@faker-js/faker": "^8.3.1",
+    "@types/express": "^4.17.21",
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^20.8.2",
+    "apollo-server-express": "^3.13.0",
+    "cors": "^2.8.5",
+    "cypress": "^13.6.1",
+    "express": "^4.18.2",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
+    "graphql-tools": "^9.0.0",
+    "gts": "^5.2.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}

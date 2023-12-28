@@ -1,0 +1,13 @@
+{
+  "extends": "./node_modules/gts/",
+  "rules": {
+    "node/no-unpublished-import": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
+}
