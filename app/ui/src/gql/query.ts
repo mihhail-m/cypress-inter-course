@@ -23,7 +23,7 @@ const Query = {
         firstName
         lastName
         books {
-          id
+          title
         }
       }
     }

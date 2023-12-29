@@ -30,12 +30,12 @@ const Author = ({
             {firstName} {lastName}
           </Typography>
           <Typography data-cy="id">ID: {id}</Typography>
-          <List>
-            Books IDs:
+          <List component="ul">
+            Books:
             {books?.map((bookId: any) => {
               return (
-                <ListItem key={bookId.id}>
-                  <ListItemText primary={bookId.id} />
+                <ListItem component="li" key={bookId.title}>
+                  <ListItemText primary={bookId.title} />
                 </ListItem>
               );
             })}

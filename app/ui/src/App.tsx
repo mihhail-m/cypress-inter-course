@@ -11,20 +11,26 @@ import {
   Stack,
   Button,
   Box,
+  Typography,
 } from '@mui/material';
 import TopBar from './components/topbar';
 import Author from './components/author';
 import {useState} from 'react';
 
-const DisplayItems = ({children, loading, error}: any) => {
+const DisplayItems = ({children, loading, error, itemsName}: any) => {
   if (loading) return <p>Loading data...</p>;
   if (error) return <p>There is an error: {error?.message}</p>;
 
   return (
     <Container sx={{py: 8}} maxWidth="md">
-      <Grid container spacing={4}>
-        {children}
-      </Grid>
+      <Stack spacing={4}>
+        <Grid container justifyContent="center">
+          <Typography variant="h3">{itemsName}</Typography>
+        </Grid>
+        <Grid container spacing={4}>
+          {children}
+        </Grid>
+      </Stack>
     </Container>
   );
 };
@@ -33,7 +39,7 @@ const DisplayBooks = () => {
   const {loading, error, data} = useQuery(Query.getBooks);
 
   return (
-    <DisplayItems error={error} loading={loading}>
+    <DisplayItems error={error} loading={loading} itemsName="Books">
       {data?.getBooks?.map(
         ({id, isbn, title}: {id: string; isbn: string; title: string}) => {
           return <Book id={id} isbn={isbn} title={title} />;
@@ -47,7 +53,7 @@ const DisplayAuthors = () => {
   const {loading, error, data} = useQuery(Query.getAuthors);
 
   return (
-    <DisplayItems loading={loading} error={error}>
+    <DisplayItems loading={loading} error={error} itemsName="Authors">
       {data?.getAuthors?.map(
         ({
           id,
@@ -117,6 +123,11 @@ function App() {
                 <ShowItemsButton handleOnClick={handleOnClick}>
                   Show Books
                 </ShowItemsButton>
+              )}
+              {isBooksVisible ? (
+                <Button>Add Book</Button>
+              ) : (
+                <Button>Add Author</Button>
               )}
             </Stack>
           </Container>
