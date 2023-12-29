@@ -10,6 +10,8 @@ import {Context} from './gql';
 import database from './data/database';
 
 const PORT = process.env.PORT || 5050;
+const GRAPHQL_ENDPOINT = process.env.GRAPHQL_ENDPOINT || '/gql';
+
 const app = express();
 
 app.use(cors());
@@ -28,7 +30,7 @@ const server = new ApolloServer<Context>({
 await server.start();
 
 app.use(
-  '/gql',
+  GRAPHQL_ENDPOINT,
   cors(),
   express.json(),
   // @ts-ignore
