@@ -16,6 +16,7 @@ import {
 import TopBar from './components/topbar';
 import Author from './components/author';
 import {useState} from 'react';
+import AddBookForm from './components/addBookForm';
 
 const DisplayItems = ({children, loading, error, itemsName}: any) => {
   if (loading) return <p>Loading data...</p>;
@@ -95,6 +96,10 @@ function App() {
   const handleOnClick = () => {
     setShowBooks(prev => !prev);
   };
+  const [showAddBookForm, setShowAddBookForm] = useState(false);
+  const handleShowAddBookForm = () => {
+    setShowAddBookForm(prev => !prev);
+  };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -124,14 +129,16 @@ function App() {
                   Show Books
                 </ShowItemsButton>
               )}
-              {isBooksVisible ? (
-                <Button>Add Book</Button>
-              ) : (
-                <Button>Add Author</Button>
+              {isBooksVisible && (
+                <Button onClick={handleShowAddBookForm}>
+                  Show add book form
+                </Button>
               )}
             </Stack>
           </Container>
         </Box>
+
+        {showAddBookForm && <AddBookForm />}
         {isBooksVisible ? <DisplayBooks /> : <DisplayAuthors />}
       </main>
     </ThemeProvider>
