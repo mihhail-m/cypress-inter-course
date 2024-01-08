@@ -53,4 +53,26 @@ export const Mutation = {
 
     return author;
   },
+
+  deleteBookById: async (
+    _: {},
+    args: {bookId: string},
+    contextValue: Context
+  ) => {
+    const deletedBook = contextValue.database.books.find(
+      book => book.id === args.bookId
+    );
+    const newBooks = contextValue.database.books.filter(
+      book => book.id !== deletedBook?.id
+    );
+    contextValue.database.books = newBooks;
+
+    return deletedBook;
+  },
+
+  deleteAllBooks: async (_: {}, __: {}, contextValue: Context) => {
+    contextValue.database.books = [];
+
+    return true;
+  },
 };

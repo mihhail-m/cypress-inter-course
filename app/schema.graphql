@@ -11,6 +11,8 @@ type Mutation {
   addBook(title: String!, isbn: String!): Book
   addAuthor(firstName: String!, lastName: String!): Author
   addBookToAuthor(authorId: String!, bookId: String!): Author
+  deleteBookById(bookId: String!): Book
+  deleteAllBooks: Boolean
 }
 
 type Book {
