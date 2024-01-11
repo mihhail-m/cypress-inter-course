@@ -21,6 +21,11 @@ const AddBookForm = (props: any) => {
       },
     }
   );
+  const [addEvent] = useMutation(Mutation.addApplicationEvent, {
+    variables: {
+      name: 'create-book',
+    },
+  });
 
   if (loading) return <p>Submitting data...</p>;
   if (error) return <p>There been error during submission.</p>;
@@ -36,6 +41,7 @@ const AddBookForm = (props: any) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     addBook();
+    addEvent();
   };
 
   return (

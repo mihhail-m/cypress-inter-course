@@ -12,6 +12,13 @@ export type Scalars = {
 export type Database = {
   books: Book[];
   authors: Author[];
+  events: ApplicationEvent[];
+};
+
+export type ApplicationEvent = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  created_at: Scalars['String'];
 };
 
 export type Book = {

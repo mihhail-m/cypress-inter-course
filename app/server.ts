@@ -7,7 +7,7 @@ import {expressMiddleware} from '@apollo/server/express4';
 import {readFileSync} from 'fs';
 import resolvers from './resolvers';
 import {Context} from './gql';
-import database from './data/database';
+import database from './db/database';
 
 const PORT = process.env.PORT || 5050;
 const GRAPHQL_ENDPOINT = process.env.GRAPHQL_ENDPOINT || '/gql';

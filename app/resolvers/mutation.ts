@@ -1,4 +1,4 @@
-import {Author, Book, Context} from '../gql';
+import {ApplicationEvent, Author, Book, Context} from '../gql';
 import {faker} from '@faker-js/faker';
 
 export const Mutation = {
@@ -72,6 +72,27 @@ export const Mutation = {
 
   deleteAllBooks: async (_: {}, __: {}, contextValue: Context) => {
     contextValue.database.books = [];
+
+    return true;
+  },
+
+  addApplicationEvent: async (
+    _: {},
+    args: {name: string},
+    contextValue: Context
+  ) => {
+    const newEvent: ApplicationEvent = {
+      id: faker.string.uuid(),
+      name: args.name,
+      created_at: Date.now().toString(),
+    };
+    contextValue.database.events.push(newEvent);
+
+    return newEvent;
+  },
+
+  deleteAllApplicationEvents: async (_: {}, __: {}, contextValue: Context) => {
+    contextValue.database.events = [];
 
     return true;
   },

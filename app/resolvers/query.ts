@@ -32,4 +32,12 @@ export const Query = {
   getBookById: (_: {}, args: {id: string}, contextValue: Context) => {
     return contextValue.database.books.find(book => book.id === args.id);
   },
+
+  getAllEvents: (_: {}, __: {}, contextValue: Context) => {
+    return contextValue.database.events;
+  },
+
+  getEventById: (_: {}, args: {id: string}, contextValue: Context) => {
+    return contextValue.database.events.find(event => event.id === args.id);
+  },
 };

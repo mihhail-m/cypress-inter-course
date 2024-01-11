@@ -27,6 +27,16 @@ const Mutation = {
       }
     }
   `,
+
+  addApplicationEvent: gql`
+    mutation AddApplicationEvent($name: String!) {
+      addApplicationEvent(name: $name) {
+        id
+        name
+        created_at
+      }
+    }
+  `,
 };
 
 export default Mutation;

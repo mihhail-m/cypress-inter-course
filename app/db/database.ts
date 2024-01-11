@@ -28,6 +28,7 @@ const books: Book[] = faker.helpers.multiple(createRandomBook, {
 const database: Database = {
   books: books,
   authors: authors,
+  events: [],
 };
 
 export default database;

@@ -5,6 +5,8 @@ type Query {
   getBooks: [Book]
   getBookByTitle(title: String!): Book
   getBookById(id: String!): Book
+  getAllEvents: [ApplicationEvent]
+  getEventById(id: String!): ApplicationEvent
 }
 
 type Mutation {
@@ -13,6 +15,8 @@ type Mutation {
   addBookToAuthor(authorId: String!, bookId: String!): Author
   deleteBookById(bookId: String!): Book
   deleteAllBooks: Boolean
+  addApplicationEvent(name: String!): ApplicationEvent
+  deleteAllApplicationEvents: Boolean
 }
 
 type Book {
@@ -27,4 +31,10 @@ type Author {
   firstName: String
   lastName: String
   books: [Book]
+}
+
+type ApplicationEvent {
+  id: ID
+  name: String
+  created_at: String
 }
