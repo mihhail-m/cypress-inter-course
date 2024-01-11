@@ -10,15 +10,24 @@ For educational purposes only.
 
 Navigate to `app` directory. This is where the "development" project is stored:
 
-`cd app`
+```sh
+
+cd app`
+```
 
 
 Then install dependencies and start the server:
 
-`npm install`
+```sh
+
+npm install`
+```
 
 
-`npm start`
+```sh
+
+npm start`
+```
 
 
 You should be able to open Apollo dashboard by navigating to `localhost:5050/gql` in your browser.
@@ -28,14 +37,22 @@ You should be able to open Apollo dashboard by navigating to `localhost:5050/gql
 
 Navigate to `app/ui` directory:
 
-`cd app/ui`
+```sh
+cd app/ui
+```
 
 
 Install dependecies:
 
-`npm install`
+```sh
+
+npm install`
+```
 
 
 Start the application. Should open automatically in your browser:
 
-`npm start`
+```sh
+
+npm start`
+```
