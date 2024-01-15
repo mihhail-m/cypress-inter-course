@@ -17,14 +17,14 @@ Install dependecies:
 
 ```sh
 
-npm install`
+npm install
 ```
 
-Navigate back to `app` directory. This is where the "development" project is stored:
+Navigate back to `app` directory. This is where the backend of project is stored:
 
 ```sh
 
-cd app`
+cd app
 ```
 
 
@@ -32,7 +32,7 @@ Then install dependencies and start the server:
 
 ```sh
 
-npm install`
+npm install
 ```
 
 
@@ -44,7 +44,7 @@ While in `app` directory execute the following command:
 
 ```sh
 
-npm start`
+npm start
 ```
 
 
@@ -59,6 +59,6 @@ Navgiagte to `app/ui` and start the React application. Should open automatically
 
 ```sh
 
-npm start`
+npm start
 ```
 
