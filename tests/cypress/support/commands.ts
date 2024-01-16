@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-// ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
 // existing commands.
@@ -8,3 +6,16 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
+//
+//
+export {};
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      forceClick(): void;
+    }
+  }
+}
+
+Cypress.Commands.add('forceClick', () => {});
