@@ -14,6 +14,5 @@
   },
   "include": [
     "app/**/*.ts",
-    "tests/cypress/support/commands.d.ts"
   ]
 }

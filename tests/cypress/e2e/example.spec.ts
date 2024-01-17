@@ -1,6 +1,9 @@
-describe('Example test', () => {
-    it('Example', () => {
-      cy.visit('/');
-      cy.get('h3').contains('Library').should('be.visible');
-    });
+describe('Custom commands example', () => {
+
+  beforeEach(() => {});
+
+  it('Custom commands example', () => {
+    cy.visit('/');
+    cy.getH3Headers().contains('Library').shouldBeVisible();
+  });
 });
