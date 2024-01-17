@@ -13,17 +13,31 @@ export default defineConfig({
       const client = new LibraryAppGqlClient();
 
       on('task', {
-          resetBooks: (): null => {
-            client.resetBooks();
+        resetBooks: (): null => {
+          client.resetBooks();
 
-            return null;
-          },
+          return null;
+        },
 
-          addBook: async ({ title, isbn }): Promise<string> => {
-            const bookId = await client.addBook(title, isbn);
+        addBook: async ({ title, isbn }): Promise<string> => {
+          const bookId = await client.addBook(title, isbn);
 
-            return bookId;
-          }
+          return bookId;
+        },
+
+        // TODO
+        resetAuthors: (): null => {
+
+          return null;
+        },
+
+        // TODO
+        // Need to return authorId to check that author was actually added in the UI
+        addAuthor: async (): Promise<string> => {
+
+            return "authorId"
+        }
+
       });
     },
   },
