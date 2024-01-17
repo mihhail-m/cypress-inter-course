@@ -36,6 +36,18 @@ npm install
 ```
 
 
+To install Cypress you need to navigate into `tests` directory and install all the necessary dependecies there:
+
+``` sh
+cd tests
+```
+
+``` sh
+npm install
+```
+
+This should install latest version of Cypress
+
 ## Usage
 
 ### Start backend server
@@ -60,5 +72,14 @@ Navgiagte to `app/ui` and start the React application. Should open automatically
 ```sh
 
 npm start
+```
+
+
+### Start Cypress tests
+
+Navigate to `tests` directory and execute following command:
+
+``` sh
+npm run cy:open
 ```
 
