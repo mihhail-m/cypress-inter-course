@@ -1,0 +1,58 @@
+{
+    "error": null,
+    "reporter": "spec",
+    "reporterStats": {
+        "suites": 1,
+        "tests": 1,
+        "passes": 0,
+        "pending": 0,
+        "failures": 1,
+        "start": "2024-01-19T14:16:10.570Z",
+        "end": "2024-01-19T14:16:11.306Z",
+        "duration": 736
+    },
+    "screenshots": [
+        {
+            "height": 591,
+            "name": null,
+            "path": "/Users/mihhail.matisinets/Desktop/cypress-inter-course/tests/cypress/screenshots/add-new-book.spec.ts/1705673771273-add-new-book.spec.ts",
+            "takenAt": "2024-01-19T14:16:11.145Z",
+            "width": 1280
+        }
+    ],
+    "spec": {
+        "absolute": "/Users/mihhail.matisinets/Desktop/cypress-inter-course/tests/cypress/e2e/add-new-book.spec.ts",
+        "fileExtension": ".ts",
+        "fileName": "add-new-book",
+        "name": "add-new-book.spec.ts",
+        "relative": "cypress/e2e/add-new-book.spec.ts"
+    },
+    "stats": {
+        "duration": 737,
+        "endedAt": "2024-01-19T14:16:11.304Z",
+        "failures": 1,
+        "passes": 0,
+        "pending": 0,
+        "skipped": 0,
+        "startedAt": "2024-01-19T14:16:10.567Z",
+        "suites": 1,
+        "tests": 1
+    },
+    "tests": [
+        {
+            "attempts": [
+                {
+                    "state": "failed"
+                }
+            ],
+            "displayError": "AssertionError: expected 'f890c759-8204-41fd-a68e-2d68d0bf19ee' to equal '36921472-9c05-4f8e-a595-a8051cbe6d3e'\n    at Context.eval (webpack://tests/./cypress/e2e/add-new-book.spec.ts:11:0)",
+            "duration": 714,
+            "state": "failed",
+            "title": [
+                "Add new book",
+                "Add new book examples"
+            ]
+        }
+    ],
+    "video": null
+}

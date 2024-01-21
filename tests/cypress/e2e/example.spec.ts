@@ -1,5 +1,4 @@
 describe('Custom commands example', () => {
-
   beforeEach(() => {});
 
   it('Custom commands example', () => {

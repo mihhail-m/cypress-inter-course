@@ -18,7 +18,7 @@ export type Database = {
 export type ApplicationEvent = {
   id: Scalars['ID'];
   name: Scalars['String'];
-  created_at: Scalars['String'];
+  createdAt: Scalars['String'];
 };
 
 export type Book = {

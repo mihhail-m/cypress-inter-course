@@ -84,7 +84,7 @@ export const Mutation = {
     const newEvent: ApplicationEvent = {
       id: faker.string.uuid(),
       name: args.name,
-      created_at: Date.now().toString(),
+      createdAt: Date.now().toString(),
     };
     contextValue.database.events.push(newEvent);
 
@@ -93,6 +93,12 @@ export const Mutation = {
 
   deleteAllApplicationEvents: async (_: {}, __: {}, contextValue: Context) => {
     contextValue.database.events = [];
+
+    return true;
+  },
+
+  deleteAllAuthors: async (_: {}, __: {}, contextValue: Context) => {
+    contextValue.database.authors = [];
 
     return true;
   },

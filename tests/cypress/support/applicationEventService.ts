@@ -1,14 +1,16 @@
 import {ApolloClient, NormalizedCacheObject} from '@apollo/client';
 
-// TODO
-class AuthorService {
+class ApplicationEventsService {
   private readonly client: ApolloClient<NormalizedCacheObject>;
 
   constructor(client: ApolloClient<NormalizedCacheObject>) {
     this.client = client;
   }
 
-  //TODO: add methods
+  // TODO
+  addApplicationEvent(eventName: string) {
+    return 'eventId';
+  }
 }
 
-export default AuthorService;
+export default ApplicationEventsService;

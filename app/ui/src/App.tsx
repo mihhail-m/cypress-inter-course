@@ -18,6 +18,7 @@ import Author from './components/author';
 import {useState} from 'react';
 import AddBookForm from './components/addBookForm';
 import Mutation from './gql/mutation';
+import ApplicationEvent from './components/applicationEvent';
 
 const DisplayItems = ({children, loading, error, itemsName}: any) => {
   if (loading) return <p>Loading data...</p>;
@@ -37,8 +38,27 @@ const DisplayItems = ({children, loading, error, itemsName}: any) => {
   );
 };
 
+const DisplayApplicationEvents = () => {
+  const {loading, error, data} = useQuery(Query.getApplicationEvents, {
+    pollInterval: 5000
+  });
+
+  return (
+    <DisplayItems error={error} loading={loading} itemsName="Application Events">
+      {data?.getAllEvents?.map(
+        ({id, name, createdAt}: {id: string; name: string; createdAt: string}) => {
+          return <ApplicationEvent id={id} name={name} createdAt={createdAt} />;
+        }
+      )}
+    </DisplayItems>
+  );
+};
+
+
 const DisplayBooks = () => {
-  const {loading, error, data} = useQuery(Query.getBooks);
+  const {loading, error, data} = useQuery(Query.getBooks, {
+    pollInterval: 5000
+  });
 
   return (
     <DisplayItems error={error} loading={loading} itemsName="Books">
@@ -52,7 +72,9 @@ const DisplayBooks = () => {
 };
 
 const DisplayAuthors = () => {
-  const {loading, error, data} = useQuery(Query.getAuthors);
+  const {loading, error, data} = useQuery(Query.getAuthors, {
+    pollInterval: 5000
+  });
 
   return (
     <DisplayItems loading={loading} error={error} itemsName="Authors">
@@ -90,19 +112,83 @@ const ShowItemsButton = ({children, handleOnClick}: any) => {
   );
 };
 
+const ShowBooksButton = ({handleOnClick}: any) => {
+  return <ShowItemsButton handleOnClick={handleOnClick}>Books</ShowItemsButton>
+}
+
+const ShowAuthorsButton = ({handleOnClick}: any) => {
+  return <ShowItemsButton handleOnClick={handleOnClick}>Authors</ShowItemsButton>
+}
+
+const ShowApplicationEventsButton = ({handleOnClick}: any) => {
+  return <ShowItemsButton handleOnClick={handleOnClick}>Application Events</ShowItemsButton>
+}
+
+
 const defaultTheme = createTheme();
 
 function App() {
-  const [createShowItemsEvent] = useMutation(Mutation.addApplicationEvent, {
+  const [createShowBooksEvent] = useMutation(Mutation.addApplicationEvent, {
     variables: {
-      name: 'get-items',
+      name: 'get-books',
     },
   });
-  const [isBooksVisible, setShowBooks] = useState(true);
-  const handleOnClick = () => {
-    setShowBooks(prev => !prev);
-    createShowItemsEvent();
+  const [createShowAuthorsEvent] = useMutation(Mutation.addApplicationEvent, {
+    variables: {
+      name: 'get-authors',
+    },
+  });
+  const [createShowApplicationEvent] = useMutation(Mutation.addApplicationEvent, {
+    variables: {
+      name: 'get-events',
+    },
+  });
+  const [itemsVisible, setShowItems] = useState({
+    books: true,
+    authors: false,
+    events: false
+  });
+
+
+  // const [areBooksVisible, setShowBooks] = useState(true);
+  const handleShowBooksOnClick = () => {
+    setShowItems(prev => {
+      prev = {
+        books: !prev.books,
+        authors: false,
+        events: false
+      }
+
+      if (prev.books === true) createShowBooksEvent();
+
+      return prev;
+    });
   };
+  const handleShowAuthorsOnClick = () => {
+    setShowItems(prev => {
+      prev = {
+        authors: !prev.authors,
+        books: false,
+        events: false,
+      }
+      if (prev.authors === true) createShowAuthorsEvent();
+
+      return prev;
+    })
+  };
+  const handleShowEventsOnClick = () => {
+    setShowItems(prev => {
+      prev = {
+        books: false,
+        authors: false,
+        events: !prev.events,
+      }
+
+      if (prev.events === true) createShowApplicationEvent();
+      return prev;
+    })
+  };
+
   const [showAddBookForm, setShowAddBookForm] = useState(false);
   const handleShowAddBookForm = () => {
     setShowAddBookForm(prev => !prev);
@@ -127,26 +213,23 @@ function App() {
               spacing={2}
               justifyContent="center"
             >
-              {isBooksVisible ? (
-                <ShowItemsButton handleOnClick={handleOnClick}>
-                  Show Authors
-                </ShowItemsButton>
-              ) : (
-                <ShowItemsButton handleOnClick={handleOnClick}>
-                  Show Books
-                </ShowItemsButton>
-              )}
-              {isBooksVisible && (
+              <ShowAuthorsButton handleOnClick={handleShowAuthorsOnClick}/>
+              <ShowBooksButton handleOnClick={handleShowBooksOnClick} />
+              <ShowApplicationEventsButton handleOnClick={handleShowEventsOnClick} />
+              {
+                itemsVisible.books &&
                 <Button onClick={handleShowAddBookForm}>
-                  Show add book form
+                  Add book
                 </Button>
-              )}
+              }
             </Stack>
           </Container>
         </Box>
 
         {showAddBookForm && <AddBookForm />}
-        {isBooksVisible ? <DisplayBooks /> : <DisplayAuthors />}
+        {itemsVisible.books ? <DisplayBooks /> : null}
+        {itemsVisible.authors ? <DisplayAuthors /> : null}
+        {itemsVisible.events ? <DisplayApplicationEvents /> : null}
       </main>
     </ThemeProvider>
   );

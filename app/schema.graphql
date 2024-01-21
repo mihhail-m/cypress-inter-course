@@ -17,6 +17,7 @@ type Mutation {
   deleteAllBooks: Boolean
   addApplicationEvent(name: String!): ApplicationEvent
   deleteAllApplicationEvents: Boolean
+  deleteAllAuthors: Boolean
 }
 
 type Book {
@@ -36,5 +37,5 @@ type Author {
 type ApplicationEvent {
   id: ID
   name: String
-  created_at: String
+  createdAt: String
 }

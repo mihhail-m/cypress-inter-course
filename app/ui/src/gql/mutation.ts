@@ -2,7 +2,7 @@ import {gql} from '@apollo/client';
 
 const Mutation = {
   addNewBookAndAuthor: gql`
-    mutation addNewBookAndAuhor(
+    mutation AddNewBookAndAuhor(
       $title: String!
       $isbn: String!
       $firstName: String!
@@ -10,10 +10,14 @@ const Mutation = {
     ) {
       addBook(title: $title, isbn: $isbn) {
         id
+        isbn
+        title
       }
 
       addAuthor(firstName: $firstName, lastName: $lastName) {
         id
+        firstName
+        lastName
       }
     }
   `,
@@ -33,7 +37,7 @@ const Mutation = {
       addApplicationEvent(name: $name) {
         id
         name
-        created_at
+        createdAt
       }
     }
   `,

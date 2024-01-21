@@ -1,0 +1,58 @@
+{
+    "error": null,
+    "reporter": "spec",
+    "reporterStats": {
+        "suites": 1,
+        "tests": 1,
+        "passes": 0,
+        "pending": 0,
+        "failures": 1,
+        "start": "2024-01-19T13:53:48.348Z",
+        "end": "2024-01-19T13:53:53.012Z",
+        "duration": 4664
+    },
+    "screenshots": [
+        {
+            "height": 591,
+            "name": null,
+            "path": "/Users/mihhail.matisinets/Desktop/cypress-inter-course/tests/cypress/screenshots/test-screenshot.spec.ts/1705672432955-test-screenshot.spec.ts",
+            "takenAt": "2024-01-19T13:53:52.799Z",
+            "width": 1280
+        }
+    ],
+    "spec": {
+        "absolute": "/Users/mihhail.matisinets/Desktop/cypress-inter-course/tests/cypress/e2e/test-screenshot.spec.ts",
+        "fileExtension": ".ts",
+        "fileName": "test-screenshot",
+        "name": "test-screenshot.spec.ts",
+        "relative": "cypress/e2e/test-screenshot.spec.ts"
+    },
+    "stats": {
+        "duration": 4660,
+        "endedAt": "2024-01-19T13:53:53.004Z",
+        "failures": 1,
+        "passes": 0,
+        "pending": 0,
+        "skipped": 0,
+        "startedAt": "2024-01-19T13:53:48.344Z",
+        "suites": 1,
+        "tests": 1
+    },
+    "tests": [
+        {
+            "attempts": [
+                {
+                    "state": "failed"
+                }
+            ],
+            "displayError": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `h5`, but never found it.\n    at Context.eval (webpack://tests/./cypress/e2e/test-screenshot.spec.ts:12:0)",
+            "duration": 4635,
+            "state": "failed",
+            "title": [
+                "Test after spec",
+                "Test after spec"
+            ]
+        }
+    ],
+    "video": "/Users/mihhail.matisinets/Desktop/cypress-inter-course/tests/cypress/videos/test-screenshot.spec.ts.mp4"
+}

@@ -28,6 +28,16 @@ const Query = {
       }
     }
   `,
+
+  getApplicationEvents: gql`
+    query GetAllApplicationEvents {
+      getAllEvents {
+        id
+        name
+        createdAt
+      }
+    }
+  `
 };
 
 export default Query;

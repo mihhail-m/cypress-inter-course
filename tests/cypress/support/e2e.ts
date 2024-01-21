@@ -18,3 +18,12 @@
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 import './commands';
+import '@shopify/cypress-graphql';
+
+Cypress.on('fail', (error, runnable) => {
+  console.log(error);
+});
+
+Cypress.on('test:before:', (test, runnable) => {
+  console.log(runnable);
+});

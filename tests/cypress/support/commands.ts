@@ -23,22 +23,26 @@ declare global {
   }
 }
 
-Cypress.Commands.add('forceClick', { prevSubject: 'optional' }, (subject, x: number, y: number) => {
-  if (Cypress.isCy(subject)) {
-    if (x && y) {
-      return cy.wrap(subject).click(x, y, { force: true });
+Cypress.Commands.add(
+  'forceClick',
+  {prevSubject: 'optional'},
+  (subject, x: number, y: number) => {
+    if (Cypress.isCy(subject)) {
+      if (x && y) {
+        return cy.wrap(subject).click(x, y, {force: true});
+      } else {
+        return cy.wrap(subject).click({force: true});
+      }
     } else {
-      return cy.wrap(subject).click({ force: true });
+      return cy.click(x, y, {force: true});
     }
-  } else {
-    return cy.click(x, y, { force: true });
   }
-});
+);
 
 Cypress.Commands.add('getBookHeader', () => {
   if (Cypress.isBrowser('chrome')) {
     return cy.get('h3').contains('Books');
-  } else{
+  } else {
     return cy.get('h3').contains('Books');
   }
 });
@@ -51,10 +55,10 @@ Cypress.Commands.add('getElementById', (selector: string) => {
   return cy.get(`[id=${selector}]`);
 });
 
-Cypress.Commands.add('shouldBeVisible', {prevSubject: 'element'}, (subject) => {
+Cypress.Commands.add('shouldBeVisible', {prevSubject: 'element'}, subject => {
   if (subject) {
     return cy.wrap(subject).should('be.visible');
   } else {
-    throw new Error('Element was not provided.')
+    throw new Error('Element was not provided.');
   }
 });
