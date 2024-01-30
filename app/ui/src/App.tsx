@@ -19,6 +19,7 @@ import {useState} from 'react';
 import AddBookForm from './components/addBookForm';
 import Mutation from './gql/mutation';
 import ApplicationEvent from './components/applicationEvent';
+import AddAuthorForm from './components/addAuthorForm';
 
 const DisplayItems = ({children, loading, error, itemsName}: any) => {
   if (loading) return <p>Loading data...</p>;
@@ -143,14 +144,23 @@ function App() {
       name: 'get-events',
     },
   });
+  const [createDeleteBooksApplicationEvent] = useMutation(Mutation.addApplicationEvent, {
+    variables: {
+      name: 'delete-books'
+    }
+  });
+  const [createDeleteAuthorsApplicationEvent] = useMutation(Mutation.addApplicationEvent, {
+    variables: {
+      name: 'delete-authors'
+    }
+  });
+
   const [itemsVisible, setShowItems] = useState({
     books: true,
     authors: false,
     events: false
   });
 
-
-  // const [areBooksVisible, setShowBooks] = useState(true);
   const handleShowBooksOnClick = () => {
     setShowItems(prev => {
       prev = {
@@ -194,6 +204,23 @@ function App() {
     setShowAddBookForm(prev => !prev);
   };
 
+  const [showAddAuthorForm, setShowAuthorAddForm] = useState(false);
+  const handleShowAddAuthorForm = () => {
+    setShowAuthorAddForm(prev => !prev);
+  };
+
+  const [deleteBooks] = useMutation(Mutation.deleteAllBooks);
+  const handleDeleteBooksOnClick = () => {
+    createDeleteBooksApplicationEvent();
+    deleteBooks();
+  }
+
+  const [deleteAuthors] = useMutation(Mutation.deleteAllAuthors);
+  const handleDeleteAuthorsOnClick = () => {
+    createDeleteAuthorsApplicationEvent();
+    deleteAuthors();
+  }
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
@@ -222,11 +249,26 @@ function App() {
                   Add book
                 </Button>
               }
+              {
+                itemsVisible.authors &&
+                <Button onClick={handleShowAddAuthorForm}>
+                  Add author
+                </Button>
+              }
+              {
+                itemsVisible.books &&
+                <Button data-cy="delete-books" onClick={handleDeleteBooksOnClick}>Delete books</Button>
+              }
+              {
+                itemsVisible.authors &&
+                <Button data-cy="delete-authors" onClick={handleDeleteAuthorsOnClick}>Delete authors</Button>
+              }
             </Stack>
           </Container>
         </Box>
 
-        {showAddBookForm && <AddBookForm />}
+        {showAddBookForm ? <AddBookForm /> : null}
+        {showAddAuthorForm ? <AddAuthorForm /> : null}
         {itemsVisible.books ? <DisplayBooks /> : null}
         {itemsVisible.authors ? <DisplayAuthors /> : null}
         {itemsVisible.events ? <DisplayApplicationEvents /> : null}

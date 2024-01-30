@@ -41,6 +41,26 @@ const Mutation = {
       }
     }
   `,
+
+  addAuthor: gql`
+    mutation AddAuthor($firstName: String!, $lastName: String!) {
+      addAuthor(firstName: $firstName, lastName: $lastName) {
+        id
+      }
+    }
+  `,
+
+  deleteAllBooks: gql`
+    mutation DeleteBooks {
+      deleteAllBooks
+    }
+  `,
+
+  deleteAllAuthors: gql`
+    mutation DeleteAuthors {
+      deleteAllAuthors
+    }
+  `
 };
 
 export default Mutation;
